@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+:root{
+  --bg:#f7f7f9; --card:#ffffff; --muted:#6b7280; --accent:#0660bd;
+  --glass: rgba(255,255,255,0.6);
+}
+.dark{--bg:#0b1020;--card:#0f1724;--muted:#9aa3b2;--accent:#3aa0ff;--glass: rgba(255,255,255,0.03)}
+*{box-sizing:border-box;font-family:Inter,system-ui,Arial;margin:0;padding:0}
+body{background:var(--bg);color:var(--muted);min-height:100vh}
+#app{display:flex;min-height:100vh;opacity:1;transition:opacity .4s ease}
+.sidebar{width:220px;background:linear-gradient(180deg,var(--card),#fff);padding:18px;border-right:1px solid rgba(0,0,0,0.04);display:flex;flex-direction:column;gap:12px}
+.brand{font-weight:700;color:var(--accent);letter-spacing:1px}
+.sidebar nav button{display:block;width:100%;text-align:left;padding:10px;border-radius:8px;border:0;background:transparent;color:var(--muted);margin:6px 0;cursor:pointer;transition:all .18s}
+.sidebar nav button.active, .sidebar nav button:hover{background:var(--glass);color:var(--accent);transform:translateX(4px)}
+.user-area{margin-top:auto;display:flex;flex-direction:column;gap:6px}
+.user-area #userName{font-weight:600;color:var(--muted)}
+.main{flex:1;display:flex;flex-direction:column}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid rgba(0,0,0,0.04);background:transparent}
+.search input{padding:8px 12px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+.cards-row{display:flex;gap:12px;padding:20px}
+.card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.04);color:#111;min-width:120px}
+.card.small{width:220px;height:100px;display:flex;flex-direction:column;justify-content:center}
+.card.large{flex:1;min-width:360px}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;padding:18px}
+.grid-two{display:flex;gap:14px;padding:18px}
+.table-actions{display:flex;gap:8px;margin-top:8px}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th,td{border-bottom:1px solid rgba(0,0,0,0.06);padding:8px;text-align:left;font-size:14px}
+.progress{height:12px;background:rgba(0,0,0,0.06);border-radius:8px;overflow:hidden}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--accent),#34d1b4);transition:width .8s ease}
+.habitos-table input[type="checkbox"]{width:18px;height:18px}
+.rotina-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:8px}
+.week-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:18px}
+.day-card{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#f7f7fb);transition:transform .18s ease}
+.day-card:hover{transform:translateY(-4px)}
+.category label{display:block;padding:6px 0;font-size:14px}
+.footer{text-align:center;padding:16px;color:var(--muted)}
+.yellow{background:linear-gradient(180deg,#fff8e6,#fff)}
+.blue{background:linear-gradient(180deg,#f3f8ff,#fff)}
+.purple{background:linear-gradient(180deg,#faf6ff,#fff)}
+.green{background:linear-gradient(180deg,#f3fff7,#fff)}
+.orange{background:linear-gradient(180deg,#fff6f0,#fff)}
+.teal{background:linear-gradient(180deg,#f0fbfb,#fff)}
+.pink{background:linear-gradient(180deg,#fff4fb,#fff)}
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);backdrop-filter:blur(4px);transition:opacity .25s;opacity:0;pointer-events:none}
+.modal.show{opacity:1;pointer-events:auto}
+.modal-card{background:var(--card);padding:18px;border-radius:12px;width:320px;box-shadow:0 20px 40px rgba(2,6,23,0.2);display:flex;flex-direction:column;gap:8px}
+.modal-card input{padding:10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06)}
+.animate-up{transform:translateY(8px);opacity:0;animation:up .6s forwards}
+@keyframes up{to{transform:none;opacity:1}}
+@media(max-width:900px){
+  .sidebar{display:none}
+  .week-grid{grid-template-columns:repeat(2,1fr)}
+  .cards-row{flex-direction:column}
+}
+.add-row{display:flex;gap:8px;margin-top:8px}
+input[type=number]{width:110px;border:0;background:transparent;font-weight:700}
