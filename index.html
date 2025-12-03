@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tudo em Ordem — Dashboard</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app" class="loading">
+    <aside class="sidebar">
+      <div class="brand">TUDO EM ORDEM</div>
+      <nav>
+        <button data-tab="financas" class="active">Finanças</button>
+        <button data-tab="habitos">Hábitos</button>
+        <button data-tab="casa">Casa & Compras</button>
+        <button data-tab="alimentacao">Alimentação</button>
+        <button data-tab="treinos">Treinos</button>
+      </nav>
+      <div class="user-area">
+        <div id="userName">Convidado</div>
+        <button id="logoutBtn" title="Sair">Sair</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="search"><input id="search" placeholder="Pesquisar..."></div>
+        <div class="actions">
+          <button id="themeToggle">Modo Escuro</button>
+          <button id="exportBtn">Exportar</button>
+          <button id="importBtn">Importar</button>
+          <input type="file" id="importFile" style="display:none">
+        </div>
+      </header>
+
+      <section id="financas" class="tabcontent active">
+        <div class="cards-row">
+          <div class="card small yellow">
+            <h4>Receitas</h4>
+            <div class="value"><input id="receitaInput" type="number" value="6000"> R$</div>
+          </div>
+          <div class="card small blue">
+            <h4>Despesas</h4>
+            <div class="value"><input id="despesaInput" type="number" value="5200"> R$</div>
+          </div>
+          <div class="card small purple">
+            <h4>Dívidas</h4>
+            <div class="value"><input id="dividaInput" type="number" value="23800"> R$</div>
+          </div>
+          <div class="card small green">
+            <h4>Investimentos</h4>
+            <div class="value"><input id="investInput" type="number" value="13000"> R$</div>
+          </div>
+        </div>
+
+        <div class="grid-two">
+          <div class="card large animate-up">
+            <h3>Orçamento e Balanço Anual</h3>
+            <table id="orcamentoTable">
+              <thead>
+                <tr><th>Mês</th><th>Receitas</th><th>Custos Fixos</th><th>Custos Variáveis</th><th>Dívidas</th><th>Balanço</th></tr>
+              </thead>
+              <tbody></tbody>
+              <tfoot><tr><td>Total</td><td id="sumReceitas">0</td><td id="sumFixos">0</td><td id="sumVariaveis">0</td><td id="sumDividas">0</td><td id="sumBalanco">0</td></tr></tfoot>
+            </table>
+            <div class="table-actions">
+              <button id="addMonth">Adicionar mês</button>
+              <button id="clearMonths">Limpar meses</button>
+            </div>
+          </div>
+
+          <aside class="card sidebar-card animate-up">
+            <h4>Orçamento Mensal</h4>
+            <div id="orcamentoMensalList"></div>
+            <div class="progress-wrap">
+              <div class="progress-label">Saldo Mensal</div>
+              <div class="progress"><div id="saldoBar" class="progress-bar"></div></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="habitos" class="tabcontent">
+        <div class="card large animate-up">
+          <h3>Hábitos Diários</h3>
+          <table class="habitos-table">
+            <thead><tr><th>Dia</th><th>Acordar</th><th>Devocional</th><th>Exercício</th><th>Ler</th><th>Água</th></tr></thead>
+            <tbody id="habitsBody"></tbody>
+          </table>
+        </div>
+
+        <div class="card small animate-up">
+          <h4>Rotina Semanal</h4>
+          <div class="rotina-grid" id="rotinaGrid"></div>
+        </div>
+
+        <div class="card animate-up">
+          <h4>Urgências</h4>
+          <ul id="urgenciasList"></ul>
+          <div class="add-row"><input id="urgenciaTxt" placeholder="Nova urgência"><button id="addUrg">Adicionar</button></div>
+        </div>
+      </section>
+
+      <section id="casa" class="tabcontent">
+        <h3>Lista do Mercado</h3>
+        <div class="cards-grid" id="marketGrid"></div>
+        <div class="card animate-up">
+          <h4>Adicionar Item</h4>
+          <input id="newItemTxt" placeholder="ex: Abacate"><select id="newItemCat"><option>Hortifrutti</option><option>Açougue</option><option>Laticínios</option><option>Mercearia</option><option>Padaria</option><option>Congelados</option></select><button id="addItemBtn">Adicionar</button>
+        </div>
+      </section>
+
+      <section id="alimentacao" class="tabcontent">
+        <h3>Plano Semanal de Alimentação</h3>
+        <div class="week-grid" id="menuWeek"></div>
+      </section>
+
+      <section id="treinos" class="tabcontent">
+        <h3>Plano de Treinos</h3>
+        <div class="cards-grid" id="workoutGrid"></div>
+      </section>
+
+      <footer class="footer">Feito com ❤️ — Template gerado</footer>
+    </main>
+  </div>
+
+  <!-- Login Modal / Page -->
+  <div id="loginModal" class="modal show">
+    <div class="modal-card">
+      <h2>Entrar no Tudo em Ordem</h2>
+      <input id="loginUser" placeholder="Usuário">
+      <input id="loginPass" type="password" placeholder="Senha">
+      <div class="row">
+        <button id="loginBtn">Entrar</button>
+        <button id="signupBtn">Criar Conta</button>
+      </div>
+      <div id="loginMsg" class="msg"></div>
+    </div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
